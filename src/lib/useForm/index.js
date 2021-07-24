@@ -1,29 +1,27 @@
 import { useState } from "react";
 
 const useForm = (options) => {
-  const [data, setData] = useState((options?.initialValues || {}));
+  const [data, setData] = useState(options?.initialValues || {});
   const [errors, setErrors] = useState({});
 
-  const handleChange = (key, sanitizeFn) => (
-    e,
-  ) => {
+  const handleChange = (key, sanitizeFn) => (e) => {
     const value = sanitizeFn ? sanitizeFn(e.target.value) : e.target.value;
     setData({
       ...data,
       [key]: value,
     });
-  }
+  };
 
   const setFieldValue = (key, value) => {
     setData({
       ...data,
       [key]: value,
     });
-  }
+  };
 
   const resetForm = () => {
     setData(options?.initialValues || {});
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,13 +55,13 @@ const useForm = (options) => {
               }
             }
 
-            if (!!Object.keys(loopErrors).length) errorsArray[index] = loopErrors;
+            if (!!Object.keys(loopErrors).length)
+              errorsArray[index] = loopErrors;
           });
 
           if (errorsArray.length) {
             newErrors[key] = errorsArray;
           }
-
         } else {
           if (validation?.required?.value && !value) {
             valid = false;
@@ -82,7 +80,6 @@ const useForm = (options) => {
             newErrors[key] = custom.message;
           }
         }
-
       }
 
       if (!valid) {

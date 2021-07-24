@@ -1,13 +1,23 @@
-import {StyledInputWrapper} from "./styles";
+import { StyledInputWrapper } from "./styles";
 
 const Input = (props) => {
-const { type = 'text', value = '', placeholder = '', required = false, onChange = () => {}, error, name, className } = props;
+  const {
+    type = "text",
+    value = "",
+    placeholder = "",
+    required = false,
+    onChange = () => {},
+    error,
+    name,
+    className,
+  } = props;
+
   return (
     <StyledInputWrapper className={className}>
       <input
         type={type}
         name={name}
-        id='custom-input'
+        id="custom-input"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
@@ -15,7 +25,7 @@ const { type = 'text', value = '', placeholder = '', required = false, onChange 
       />
       {!!error && <p className="error">{error}</p>}
     </StyledInputWrapper>
-  )
-}
+  );
+};
 
 export default Input;

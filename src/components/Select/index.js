@@ -1,7 +1,7 @@
 import { memo } from "react";
-import {StyledWrapper} from "./styles";
+import { StyledWrapper } from "./styles";
 
-const CustomSelect = ({name, onChange, options, error}) => {
+const CustomSelect = ({ name, onChange, options, error }) => {
   return (
     <StyledWrapper>
       <select name={name} onChange={onChange}>
@@ -16,7 +16,7 @@ const CustomSelect = ({name, onChange, options, error}) => {
       </select>
       {!!error && <p className="error">{error}</p>}
     </StyledWrapper>
-  )
-}
+  );
+};
 
 export default memo(CustomSelect);
