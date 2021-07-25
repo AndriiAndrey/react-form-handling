@@ -7,14 +7,15 @@ const Input = (props) => {
     placeholder = "",
     required = false,
     onChange = () => {},
-    error,
-    name,
-    className,
+    error = "",
+    name = "",
+    className = "",
   } = props;
 
   return (
     <StyledInputWrapper className={className}>
       <input
+        data-testid='custom-input'
         type={type}
         name={name}
         id="custom-input"
@@ -23,7 +24,7 @@ const Input = (props) => {
         onChange={onChange}
         required={required}
       />
-      {!!error && <p className="error">{error}</p>}
+      {!!error && <p data-testid='input-error' className="error">{error}</p>}
     </StyledInputWrapper>
   );
 };
